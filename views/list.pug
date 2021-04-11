@@ -13,7 +13,7 @@ block content
     each dir in dirs
       li
         i.icon-folder-close(style="position: relative; left: -10px;")
-        a(href="/web/list/#{dir.id}") #{dir.name}
+        a(href=`/web/list/${dir.id}`) #{dir.name}
         |&nbsp;-&nbsp;
         a.delete(data-name="#{dir.name}", data-id="#{dir.id}", style="color: darkred;", href="#") delete
 
@@ -25,7 +25,7 @@ block content
           |&nbsp;
           span.label srt
         |&nbsp;-&nbsp;
-        a.delete(data-name="#{file.name}", data-id="#{file.id}", style="color: darkred;", href="#") delete
+        a.delete(data-name=`${file.name}`, data-id=`${file.id}`, style="color: darkred;", href="#") delete
 
   form#upload-form(style="margin-top: 40px;")
     input#file(type="file", name="file", style="display: none;")
