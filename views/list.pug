@@ -20,7 +20,7 @@ block content
   ul(style="position: relative; left: 10px;")
     each file in files
       li
-        a(href="/web/play/#{file.id}") #{file.name}
+        a(href=`/web/play/${file.id}`) #{file.name}
         if file.srt === true
           |&nbsp;
           span.label srt
