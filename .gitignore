@@ -2,6 +2,5 @@ node_modules
 *~
 *.swo
 *.swp
-media
 upload
 data
