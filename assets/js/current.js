@@ -37,14 +37,6 @@ $(document).ready(function () {
   position = 0;
   updatePositionText();
 
-  // Update HUD in real time
-  $('#positionSlider').on('input', function (e) {
-    changingSlider = true;
-    var v = parseInt($('#positionSlider').val(), 10);
-    position = Math.floor(duration * v / 1000);
-    updatePositionText();
-  });
-
   // Once drag is finished, update final position and server
   $('#positionSlider').on('change', function (e) {
     setTimeout(function () {   // Prevent small glitch
@@ -57,30 +49,4 @@ $(document).ready(function () {
        , dataType: 'json', contentType:"application/json; charset=utf-8"
        , data: JSON.stringify({ position: position }) });
   });
-
-  // Poll server regularly to get updates
-  setInterval(function () {
-    $.ajax({ type: 'GET', url: '/api/status' }).complete(function (jqxhr) {
-      if (jqxhr.status !== 200 && jqxhr.status !== 304) {
-        $('#playingSomething').css('display', 'none');
-        $('#playingNothing').css('display', 'block');
-        return;
-      }
-
-      if (!changingSlider) {
-        duration = Math.floor(jqxhr.responseJSON.duration / 1000000);
-        position = Math.floor(jqxhr.responseJSON.position / 1000000);
-        $('#positionSlider').val(Math.floor(1000 * position / duration));
-        updatePositionText();
-      }
-
-      if (jqxhr.responseJSON.position) {
-        $('#playingSomething').css('display', 'block');
-        $('#playingNothing').css('display', 'none');
-      } else {
-        $('#playingSomething').css('display', 'none');
-        $('#playingNothing').css('display', 'block');
-      }
-    });
-  }, 400);
 });

@@ -4,29 +4,28 @@ block head
   title Remote
 
 block content
-  h3 Currently playing
-  div#playingSomething(style="display: none;")
-    h5 #{currentlyPlaying}
+  h3 Currently playing 
 
-    a#pause(href="#",style="margin-right: 30px;")
-      img(src="/assets/img/pause.png", style="width: 50px; height: 50px;")
-    a#stop(href="#")
-      img(src="/assets/img/stop.png", style="width: 50px; height: 50px;")
+  h5 #{currentlyPlaying}
 
-    br
-    br
-    br
+  a#pause(href="#",style="margin-right: 30px;")
+    img(src="/assets/img/pause.png", style="width: 50px; height: 50px;")
+  a#stop(href="#")
+    img(src="/assets/img/stop.png", style="width: 50px; height: 50px;")
 
-    div#position(style="color: #777; font-weight: bold; font-size: 30px;")
+  br
+  br
+  br
 
-    br
-    br
+  div#position(style="color: #777; font-weight: bold; font-size: 30px;")
 
-    input#positionSlider(type="range",value="0",min="0",max="1000",style="width: 100%;")
+  br
+  br
 
-  div#playingNothing(style="display: none;")
-    h5 Nothing
-    a(href="/web/list") Go back to movies list
+  input#positionSlider(type="range",value="0",min="0",max="1000",style="width: 100%;")
+
+  h5 Nothing
+  a(href="/web/list") Go back to movies list
 
   div#duration(style="display: none;") #{currentDuration}
 
