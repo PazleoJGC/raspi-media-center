@@ -33,7 +33,6 @@ function updatePositionText () {
 
 $(document).ready(function () {
   var changingSlider = false;
-  duration = parseInt($('#duration').html(), 10);
   position = 0;
   updatePositionText();
 
@@ -42,8 +41,7 @@ $(document).ready(function () {
     setTimeout(function () {   // Prevent small glitch
       changingSlider = false;
     }, 3000);
-    var v = parseInt($('#positionSlider').val(), 10);
-    position = Math.floor(duration * v / 1000);
+    position = parseInt($('#positionSlider').val(), 10);
     updatePositionText();
     $.ajax({ type: 'POST', url: '/api/position'
        , dataType: 'json', contentType:"application/json; charset=utf-8"
