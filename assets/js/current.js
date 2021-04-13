@@ -4,29 +4,18 @@ $('#pause').on('click', function () {
   $.ajax({ type: 'GET', url: '/api/pause' });
 });
 
-
 $('#stop').on('click', function () {
   $.ajax({ type: 'GET', url: '/api/stop' });
 });
 
-
-
 function niceTimeFormat (s) {
-  var h = Math.floor(s / 3600);
-  s = s - 3600 * h;
-  var m = Math.floor(s / 60);
-  s = s - 60 * m;
-  var msg = '';
-
-  if (h > 0 ) { msg += h + ':'; }
-  if (m > 0 ) { msg += m + ':'; }
-  msg += s;
+  var msg = s + ' %';
   return msg;
 }
 
 
 function updatePositionText () {
-  var msg = niceTimeFormat(position) + ' / ' + niceTimeFormat(duration);
+  var msg = niceTimeFormat(position);
   $('#position').html(msg);
 }
 
