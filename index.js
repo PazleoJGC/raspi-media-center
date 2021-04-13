@@ -9,6 +9,7 @@ var express = require('express')
   , upload = require('multer')({ dest: config.uploadTempDirectory })
   , webRoutes = require('./lib/web')
   , apiRoutes = require('./lib/api')
+  , exec = require('child_process').exec
   ;
 
 app.enable('view cache');
@@ -69,6 +70,7 @@ app.render('list.pug', function () {
 
     server.listen(config.serverPort, function () {
       console.log("Server launched, ready to accept connections");
+      //exec("eog --fullscreen Untitled.png");
     });
   });
 });
