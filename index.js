@@ -70,7 +70,7 @@ app.render('list.pug', function () {
 
     server.listen(config.serverPort, function () {
       console.log("Server launched, ready to accept connections");
-      //exec("eog --fullscreen Untitled.png");
+      exec("eog --fullscreen Untitled.png");
     });
   });
 });
